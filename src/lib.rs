@@ -2,7 +2,7 @@ use bevy::asset::{AssetLoader, AssetPath, BoxedFuture, LoadContext, LoadedAsset}
 use bevy::math::vec2;
 use bevy::prelude::*;
 use bevy::sprite::TextureAtlas;
-use bevy::utils::HashMap;
+//use bevy::utils::HashMap;
 use lazy_static::*;
 use serde::Deserialize;
 use std::path::Path;
@@ -62,9 +62,9 @@ impl AssetLoader for TextureAtlasLoader {
             // image not loaded yet, set the atlas size to one pixel temporarily.
             let mut texture_atlas = TextureAtlas::new_empty(image_handle, Vec2::splat(1.));
 
-            for (name, sprite_rect) in manifest.sprites.into_iter().map(|sprite| sprite.into()) {
-                let index = texture_atlas.add_texture(sprite_rect);
-                if !name.is_empty() {
+            for (_name, sprite_rect) in manifest.sprites.into_iter().map(|sprite| sprite.into()) {
+                let _index = texture_atlas.add_texture(sprite_rect);
+                /*if !name.is_empty() {
                     let handles = texture_atlas
                         .texture_handles
                         .get_or_insert(HashMap::default());
@@ -74,7 +74,7 @@ impl AssetLoader for TextureAtlasLoader {
                             manifest.path
                         );
                     }
-                }
+                }*/
             }
             let asset_path = AssetPath::new(load_context.path().into(), None);
             let texture_atlas_handle: Handle<TextureAtlas> = load_context.get_handle(asset_path);

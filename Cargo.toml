@@ -10,7 +10,7 @@ readme = "README.md"
 description = "Load heterogenous texture atlases from a ron manifest"
 
 [dependencies]
-bevy = { version = "0.9", features = [] }
+bevy = "0.10.1"
 ron = "0.8.0"
 serde = { version = "1.0.145", features = ["derive"] }
 anyhow = "1.0.65"
